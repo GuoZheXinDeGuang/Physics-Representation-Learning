@@ -14,10 +14,6 @@ import random
 import weakref
 from collections import OrderedDict
 
-
-
-
-
 class WellDatasetForJEPA(Dataset):
     """
     Auto-discovers HDF5 shards and yields (context, target) windows from full trajectories.

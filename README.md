@@ -1,4 +1,4 @@
-This is the official code repository for the paper [Representation Learning for Spatiotemporal Physical Systems](arxiv.org/pdf/2603.13227).
+This is the official code repository for the paper [Representation Learning for Spatiotemporal Physical Systems](https://arxiv.org/abs/2603.13227).
 
 ## Installation
 
@@ -71,7 +71,7 @@ The data directory name must match one of the dataset keys in `physics_jepa/base
 
 ### 5. MPP finetuning
 
-Fine-tune a pretrained [MPP](https://github.com/PolymathicAI/multiple_physics_pretraining) (Multiple Physics Pretraining) model for physical parameter estimation. Requires the `avit`, `spatial_modules`, and `YParams` packages from the MPP codebase. Pass the dataset name and path to a pretrained MPP checkpoint:
+Fine-tune a pretrained [MPP](https://github.com/PolymathicAI/multiple_physics_pretraining) (Multiple Physics Pretraining) model for physical parameter estimation. Pass the dataset name and path to a pretrained MPP checkpoint:
 
 ```bash
 scripts/run_mpp_param_estimation.sh shear_flow /path/to/MPP_AViT_Ti

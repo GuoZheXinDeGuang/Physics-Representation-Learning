@@ -1,5 +1,4 @@
 #!/bin/bash
-# Environment setup for physics_jepa.
 # Edit this file to match your computing environment, then source it from the
 # other scripts (it is sourced automatically by all scripts in this directory).
 
