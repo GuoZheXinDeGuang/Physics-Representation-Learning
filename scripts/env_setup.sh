@@ -6,7 +6,8 @@
 # module load python/3.11.7
 
 # Activate your virtual environment:
-source /path/to/your/venv/bin/activate
+# source /path/to/your/venv/bin/activate
+conda activate your_conda_env
 
 # Navigate to the project root:
 cd /path/to/physics_jepa_public

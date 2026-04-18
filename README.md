@@ -1,4 +1,6 @@
-This is the official code repository for the paper [Representation Learning for Spatiotemporal Physical Systems](https://arxiv.org/abs/2603.13227).
+# CSCI-GA 2572 Deep Learning Final Project
+
+Baseline Solution - Implementation on Representation Learning for Spatiotemporal Physical Systems](https://arxiv.org/abs/2603.13227).
 
 ## Installation
 
@@ -9,9 +11,42 @@ Clone the repository and install dependencies:
 ```bash
 git clone https://github.com/your-org/physics_jepa_public
 cd physics_jepa_public
-pip install torch torchvision einops omegaconf wandb tqdm h5py psutil scikit-learn timm the-well
-pip install -e .
+conda create -n jepa_physics python=3.10
+# pip install torch torchvision einops omegaconf wandb tqdm h5py psutil scikit-learn timm the-well
+# pip install -e .
+pip install -r requirements.txt
 ```
+
+Pareparing for the dataset
+```bash
+pip install the_well
+the-well-download --base-path /your/path/to/the_well --dataset active_matter --split train
+the-well-download --base-path /your/path/to/the_well --dataset active_matter --split valid
+the-well-download --base-path /your/path/to/the_well --dataset active_matter --split test
+```
+
+DataLoader
+```python
+from physics_jepa.data import get_train_sequence_dataloader
+
+train_loader = get_train_sequence_dataloader(
+    dataset_name="active_matter",
+    num_frames=16,
+    num_examples=None,
+    batch_size=8,
+    resolution=224,
+    offset=1,
+    noise_std=0.0,
+)
+```
+
+How to evaluate based on baseline JEPA:
+```bash
+python -m physics_jepa.eval_frozen_regression \
+  configs/train_activematter_small.yaml \
+  --trained_model_path /path/to/ConvEncoder_XX.pth
+```
+Here we follow the value of this, we use 100 epochs, learning rate at 1e-3 and weight decay at 1e-4. You cab change the batch size at ft/linear
 
 ### Environment setup
 
