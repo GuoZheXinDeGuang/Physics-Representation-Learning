@@ -40,13 +40,30 @@ train_loader = get_train_sequence_dataloader(
 )
 ```
 
+Before run, please make sure to set the path of your dataset. Here is the command to run:
+```bash
+CUDA_VISIBLE_DEVICES=1 python -m physics_jepa.train_jepa   configs/train_activematter_small.yaml   train.num_epochs=6   train.batch_size=3
+```
+Right now I only use one 3090 GPU to run this, if you have more GPU, say you have 4, you can increase the batch size and run like the following:
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --nproc_per_node=4 --standalone \
+    -m physics_jepa.train_jepa \
+    configs/train_activematter_small.yaml \
+    train.num_epochs=6 train.batch_size=4
+```
+
 How to evaluate based on baseline JEPA:
 ```bash
-python -m physics_jepa.eval_frozen_regression \
+CUDA_VISIBLE_DEVICES=1 python -m physics_jepa.eval_frozen_regression \
   configs/train_activematter_small.yaml \
-  --trained_model_path /path/to/ConvEncoder_XX.pth
+  ft.batch_size=16 \
+  --trained_model_path checkpoints/active_matter-16frames-cnn-jepa-noise-std-1.0_2026-04-18_20-54-10/ConvEncoder_5.pth
 ```
-Here we follow the value of this, we use 100 epochs, learning rate at 1e-3 and weight decay at 1e-4. You cab change the batch size at ft/linear
+Here we follow the value of this, we use 100 epochs, learning rate at 1e-3 and weight decay at 1e-4. You cab change the batch size at ft/linear.
+
+
+### Below are from the original Repo
 
 ### Environment setup
 

@@ -7,10 +7,10 @@
 
 # Activate your virtual environment:
 # source /path/to/your/venv/bin/activate
-conda activate your_conda_env
+conda activate jepa_physics
 
 # Navigate to the project root:
-cd /path/to/physics_jepa_public
+cd /home/zihan/Physics-Representation-Learning
 
 # Set the path to The Well datasets:
-export THE_WELL_DATA_DIR=/path/to/the_well/datasets
+export THE_WELL_DATA_DIR=/home/zl4701/Physics-Representation-Learning/dataset
