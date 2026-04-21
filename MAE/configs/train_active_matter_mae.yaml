@@ -1,0 +1,62 @@
+dataset:
+  name: active_matter
+  num_frames: 16
+  num_chans: 11
+  resolution: 224
+  offset: 1
+  noise_std: 0.0
+
+model:
+  encoder_arch: pretrain_videomae_small_patch16_224
+  patch_size: 16
+  tubelet_size: 2
+  mask_ratio: 0.9
+  decoder_embed_dim: 192
+  decoder_depth: 4
+  decoder_num_heads: 3
+  decoder_mlp_ratio: 4.0
+  norm_pix_loss: true
+  max_parameters: 100000000
+
+train:
+  seed: 42
+  run_name: active_matter_videomae_mae
+  timestamp_output: true
+  num_epochs: 100
+  batch_size: 2
+  val_batch_size: 2
+  target_global_batch_size: 64
+  lr: 1.5e-4
+  min_lr: 1.0e-6
+  weight_decay: 0.05
+  warmup_epochs: 10
+  amp: true
+  amp_dtype: float16
+  clip_grad_norm: 0.0
+  log_every_steps: 50
+  max_train_batches: null
+  val_max_batches: null
+
+eval:
+  seed: 42
+  batch_size: 8
+  pool: mean
+  linear_epochs: 100
+  linear_lr: 1.0e-3
+  linear_weight_decay: 1.0e-4
+  linear_batch_size: 256
+  knn_k: [1, 3, 5, 10, 20, 50]
+  max_batches: null
+  max_train_batches: null
+  max_val_batches: null
+  max_test_batches: null
+
+data:
+  num_workers: 4
+  pin_memory: true
+  persistent_workers: true
+  prefetch_factor: 2
+
+paths:
+  the_well_data_dir: /home_shared/grail_enoch/the_well
+  output_dir: MAE/checkpoints
