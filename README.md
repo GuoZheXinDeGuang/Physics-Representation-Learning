@@ -4,7 +4,7 @@ This repo contains three self-supervised representation learning approaches for 
 
 - **`baseline_jepa/`** — Convolutional JEPA baseline ([arXiv:2603.13227](https://arxiv.org/abs/2603.13227))
 - **`MAE/`** — VideoMAE-style masked autoencoder
-- **`Dynamo/`** — DynaMo in-domain dynamics pretraining ([arXiv:2409.12192](https://arxiv.org/abs/2409.12192))
+- **`Dynamo/`** — DynaMo in-domain dynamics pretraining (inspired by the paper [arXiv:2409.12192](https://arxiv.org/abs/2409.12192))
 
 ---
 
@@ -205,7 +205,7 @@ PYTHONPATH=. python MAE/tests/test_mae_smoke.py
 
 ## 3. DynaMo (`Dynamo/`)
 
-DynaMo dynamics pretraining adapted to `active_matter`. `train_thewell.py` reuses `train.py::Trainer` and only overrides the dataset path so the official train/valid splits from The Well are used (no random re-splitting, no `TrajectorySlicerDataset` wrapping — windows are already produced as `(T, V=1, C=11, H, W)`).
+DynaMo dynamics pretraining adapted to `active_matter`. `train_thewell.py` reuses `train.py::Trainer` and only overrides the dataset path so the official train/valid splits from The Well are used (no random re-splitting, no `TrajectorySlicerDataset` wrapping — windows are already produced as `(T, V=1, C=11, H, W)`). We use the ideas of Dynamo to learn robust physics representations. 
 
 ### Install
 
