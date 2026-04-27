@@ -4,7 +4,7 @@ This repo contains three self-supervised representation learning approaches for 
 
 - **`baseline_jepa/`** — Convolutional JEPA baseline ([arXiv:2603.13227](https://arxiv.org/abs/2603.13227))
 - **`MAE/`** — VideoMAE-style masked autoencoder
-- **`Dynamo/`** — DynaMo in-domain dynamics pretraining (inspired by the paper [arXiv:2409.12192](https://arxiv.org/abs/2409.12192))
+- **`Dynamo/`** — Predictive representation learning framework for modeling in-domain physical dynamics through JEPA-style methods. (inspired by the paper [arXiv:2409.12192](https://arxiv.org/abs/2409.12192))
 
 ---
 
