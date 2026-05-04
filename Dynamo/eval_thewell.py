@@ -381,6 +381,11 @@ def main():
         json.dump(results, f, indent=2)
     log.info("wrote %s", save_path)
 
+    # Save linear probe weights so they can be reloaded without re-training.
+    lin_probe_path = save_path.with_name(save_path.stem.replace("_eval", "") + "_linear_probe.pt")
+    torch.save(lin_model.state_dict(), lin_probe_path)
+    log.info("wrote linear probe weights -> %s", lin_probe_path)
+
 
 if __name__ == "__main__":
     main()
